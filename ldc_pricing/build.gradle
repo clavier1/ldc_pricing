@@ -22,10 +22,10 @@ dependencies {
   compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.0'
 }
 
-mainClassName = 'io.vertx.HelloWorldEmbedded'
+mainClassName = 'ldc.vertx.LDCService'
 
 shadowJar {
-  classifier = 'fat'
+  classifier = 'fat'  
   mergeServiceFiles {
     include 'META-INF/services/io.vertx.core.spi.VerticleFactory'
   }
