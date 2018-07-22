@@ -18,6 +18,8 @@ dependencies {
   compile "io.vertx:vertx-core:$version"
   compile "io.vertx:vertx-web-client:$version"
   compile "io.vertx:vertx-hazelcast:$version"
+  compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.0'
+  compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.0'
 }
 
 mainClassName = 'io.vertx.HelloWorldEmbedded'
