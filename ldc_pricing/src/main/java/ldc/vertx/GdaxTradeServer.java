@@ -13,6 +13,7 @@ public class GdaxTradeServer extends AbstractVerticle {
     private static final Logger logger = LogManager.getLogger(GdaxTradeServer.class);
     
     private static final String BTC_USD = "BTC-USD";
+    private static final int PORT = 8080;
 
     @Override
     public void start() throws Exception {
@@ -33,11 +34,11 @@ public class GdaxTradeServer extends AbstractVerticle {
 
         });
         
-        httpServer.listen(8080, listenResult -> {
+        httpServer.listen(PORT, listenResult -> {
             if (listenResult.failed()) {
                 logger.error("Failed to start HTTP server. {}", listenResult.cause());
             } else {
-                logger.info(GdaxTradeServer.class.getSimpleName() + " started");
+                logger.info("{} start listening to port: {}", this.getClass().getSimpleName(), PORT);
             }
         });  
     }
