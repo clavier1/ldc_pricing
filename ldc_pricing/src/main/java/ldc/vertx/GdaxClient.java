@@ -11,6 +11,13 @@ import io.vertx.core.http.RequestOptions;
 import io.vertx.core.json.JsonObject;
 import ldc.utils.GdaxMessageType;
 
+/**
+ * An HttpClient has a websocket connection to GDAX and receives the bitcoin trade data
+ * The client uses event bus to publish the bitcoin trade data to GdaxTradeServer
+ *  
+ * @author chengli
+ *
+ */
 public class GdaxClient extends AbstractVerticle {
     private static final Logger logger = LogManager.getLogger(GdaxClient.class);
     
@@ -38,6 +45,11 @@ public class GdaxClient extends AbstractVerticle {
         
     }
     
+    /**
+     * publish trade data to GdaxTradeServer, including last_match and match
+     * 
+     * @param data
+     */
     private void handleData(Buffer data) {
         // may optimize by only parse the "type" instead of dumping all to the json object, if buffer very large
         JsonObject dataJson = new JsonObject(data);

@@ -9,6 +9,11 @@ import io.vertx.core.http.HttpMethod;
 import io.vertx.core.http.HttpServer;
 import io.vertx.core.json.JsonObject;
 
+/**
+ * An HttpServer that receives data from GdaxClient and publish the latest bitcoin price
+ * @author chengli
+ *
+ */
 public class GdaxTradeServer extends AbstractVerticle {
     private static final Logger logger = LogManager.getLogger(GdaxTradeServer.class);
     
@@ -49,6 +54,11 @@ public class GdaxTradeServer extends AbstractVerticle {
         return priceJson;
     }
     
+    /**
+     * update the json object with latest bitcoin price
+     * @param priceJson
+     * @param messageBody
+     */
     private void updatePrice(JsonObject priceJson, Object messageBody) {
         JsonObject messageJson = (JsonObject) messageBody;
         priceJson.put(BTC_USD, messageJson.getString("price"));
